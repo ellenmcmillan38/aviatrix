@@ -10,6 +10,8 @@ import Foundation
 
 class AviatrixData {
     
+    
+    //Dictionary of string and doubles displaying the fuel prices in different cities
     var fuelPrices = [
         "St. Louis" : 1.79,
         "Phoenix" : 1.84,
@@ -17,6 +19,8 @@ class AviatrixData {
         "SLC" : 1.95
     ]
     
+    
+    //4 dictionaries inside a dictionary: keys are where you are, values are how far the other cities
     var knownDistances = [
         "St. Louis" : [
             "St. Louis" : 0,

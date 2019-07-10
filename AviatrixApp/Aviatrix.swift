@@ -11,6 +11,7 @@ import Foundation
 class Aviatrix {
     
     //Objects
+    var currentLocation = "St Louis"
     var author : String
     
     //Saying who created this plane and airline
@@ -33,15 +34,23 @@ class Aviatrix {
         
     }
     
+    
     func flyTo(destination : String) {
+        currentLocation = destination
         
     }
-    
-    func distanceTo(target : String) {
+    //tells planes how far things are
+    func distanceTo(target : String, current : String) -> Int{
+        //get data from aviatrix file
+        let data = AviatrixData()
+        return data.knownDistances[current]![target]!
     
     }
     
     func knownDestinations() -> [String] {
-       return ["St. Louis"]
+        //Returns all the options for destinations
+        //get info from the data file
+        
+        return ["St. Louis", "Pheonix", "Denver", "SLC"]
     }
 }
