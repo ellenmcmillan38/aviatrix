@@ -11,8 +11,13 @@ import Foundation
 class Aviatrix {
     
     //Objects
+    var running = false
     var currentLocation = "St Louis"
     var author : String
+    var distanceTraveled = 0
+    var maxFuel = 5000
+    var fuelLevel = 5000.0
+    var milesPerGallon = 0.4
     
     //Saying who created this plane and airline
     init(myAuthor : String){
@@ -22,7 +27,7 @@ class Aviatrix {
     
     //Tells us if it's running or not
     
-    var running = false
+    
     
     //Starts airplane
     func start() -> Bool {
@@ -30,12 +35,16 @@ class Aviatrix {
         return running
     }
     
-    func refuel() {
+    func refuel() -> Double{
+        
+        return 5000.0
         
     }
     
     
     func flyTo(destination : String) {
+        distanceTraveled += distanceTo(target: destination, current: currentLocation)
+        fuelLevel -= Double(distanceTraveled) * milesPerGallon
         currentLocation = destination
         
     }
@@ -50,7 +59,8 @@ class Aviatrix {
     func knownDestinations() -> [String] {
         //Returns all the options for destinations
         //get info from the data file
+        let data = AviatrixData()
+        return Array(data.knownDistances.keys)
         
-        return ["St. Louis", "Pheonix", "Denver", "SLC"]
     }
 }
